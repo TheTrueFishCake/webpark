@@ -1,0 +1,8 @@
+Textures
+Grass:
+	Link:
+	https://commons.wikimedia.org/wiki/File:Buffalo_grass_texture.jpg
+	Modifications:
+	- Resized to be 512x512
+	- Edited to be mirrored and turned to create a "mosaic" effect
+	- Made image sharper
