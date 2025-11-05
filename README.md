@@ -1,2 +1,4 @@
 # webpark
-a game made by two newbies
+a game made by:
+Fishcake
+Saudeci
