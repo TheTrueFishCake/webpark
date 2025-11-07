@@ -6,3 +6,9 @@ Grass:
 	- Resized to be 512x512
 	- Edited to be mirrored and turned to create a "mosaic" effect
 	- Made image sharper
+Sand:
+	Link:
+	https://commons.wikimedia.org/wiki/File:Sand_(32579317904).jpg
+	Modifications:
+	- Resized to be 512x512
+	- Made image sharper

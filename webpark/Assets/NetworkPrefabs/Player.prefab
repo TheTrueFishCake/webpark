@@ -46,6 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bc0046303c58148b23c8ab0f1a4eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  characterController: {fileID: 0}
+  playerCamera: {fileID: 2332001111686231222}
+  walkSpeed: 5
+  runSpeed: 10
+  jumpHeight: 2
 --- !u!114 &6373775489086786327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,9 +161,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.01
+  far clip plane: 100
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -166,7 +171,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: d4ffac34f792962469769b17db181ccc, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
