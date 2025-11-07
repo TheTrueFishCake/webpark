@@ -21,13 +21,15 @@ public class playerControl : MonoBehaviour
     [Range(0f, 10f)]
     [SerializeField] float cameraSensitivityY = 5f; //didn't know how to make these without giving both floats spaces so I made them seperate ;*(
 
-    bool touchingGround = true;
-    float xCamRot,Z;
+    bool touchingGround, canJump;
+    float xCamRot, extraJumpTime;
     Vector3 movementInp;
     Vector3 cameraInp;
 
     void Start()
     {
+        Cursor.visible = false;
+
         rb = GetComponent<Rigidbody>();
         cam = FindFirstObjectByType<Camera>().GetComponent<Transform>(); //please dont make fun of me for this
         floorDetectorCol = GetComponent<SphereCollider>();
@@ -46,8 +48,12 @@ public class playerControl : MonoBehaviour
 
         // JUMPING //
 
+        if (extraJumpTime >= 0 && !touchingGround)
+            extraJumpTime -= Time.deltaTime;
+        else if (extraJumpTime <= 0 && !touchingGround)
+            canJump = false;
 
-        if (Input.GetButtonDown("Jump") && touchingGround)
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpHeight, rb.linearVelocity.z); //adds jump velocity
             touchingGround = false; //disallow jumping
@@ -55,7 +61,7 @@ public class playerControl : MonoBehaviour
 
         // CAMERA //
 
-        cameraInp = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        cameraInp = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         xCamRot -= cameraInp.y * cameraSensitivityY;
 
@@ -67,11 +73,13 @@ public class playerControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) //onCollisionEnter so that it will only detect when falling onto ground and not when in the middle of jumping up
     {
-        touchingGround = true; //if sphere collider is touching anything, set touchingGround to true to allow jumping
+        touchingGround = true; //if sphere collider is touching anything, set touchingGround to true and allow jumping
+        canJump = true;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        touchingGround = false; //if off ground, disallow jumping
+        extraJumpTime = 0.25f;
+        touchingGround = false; //if off ground, disallow jumping after a 0.25s timer
     }
 }
