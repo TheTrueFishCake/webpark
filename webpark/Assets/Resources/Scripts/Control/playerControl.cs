@@ -71,13 +71,14 @@ public class playerControl : MonoBehaviour
         //camera rotation currently needs to be clamped on Y
     }
 
-    private void OnCollisionEnter(Collision collision) //onCollisionEnter so that it will only detect when falling onto ground and not when in the middle of jumping up
+    private void OnTriggerEnter() //onCollisionEnter so that it will only detect when falling onto ground and not when in the middle of jumping up
     {
+        Debug.Log("can jump");
         touchingGround = true; //if sphere collider is touching anything, set touchingGround to true and allow jumping
         canJump = true;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit()
     {
         extraJumpTime = 0.25f;
         touchingGround = false; //if off ground, disallow jumping after a 0.25s timer
