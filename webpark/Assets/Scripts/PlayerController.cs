@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviourPun
     [Header("References")]
     [SerializeField] CharacterController characterController;
     [SerializeField] Camera playerCamera;
+    [SerializeField] Animator playerAnimator;
 
     [Header("Movement Settings")]
     [SerializeField] float walkSpeed = 5f;
@@ -17,11 +18,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float mouseSensitivity = 2f;
     [SerializeField] float gravity = -9.81f;
 
-    [Header("Leg Motion")]
-    [SerializeField] Transform leftLeg;
-    [SerializeField] Transform rightLeg;
-    [SerializeField] float legAngle = 30f;    // max rotation angle in degrees
-    [SerializeField] float legSpeed = 6f;     // speed of back-and-forth motion
+
 
     float verticalVelocity = 0f;
     float cameraPitch = 0f;
@@ -35,8 +32,8 @@ public class PlayerController : MonoBehaviourPun
         if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
 
         // cache initial local rotations for legs so we rotate relative to their starting pose
-        if (leftLeg != null) leftLegInitialRot = leftLeg.localRotation;
-        if (rightLeg != null) rightLegInitialRot = rightLeg.localRotation;
+        //if (leftLeg != null) leftLegInitialRot = leftLeg.localRotation;
+        //if (rightLeg != null) rightLegInitialRot = rightLeg.localRotation;
 
         if (!photonView.IsMine)
         {
@@ -57,7 +54,7 @@ public class PlayerController : MonoBehaviourPun
         HandleMouseLook();
         HandleJump();
         HandleMovement();
-        HandleLegMotion();
+        SetAnim();
     }
 
     void HandleMovement()
@@ -99,30 +96,11 @@ public class PlayerController : MonoBehaviourPun
             playerCamera.transform.localEulerAngles = Vector3.right * cameraPitch;
     }
 
-    // Rotates the two leg transforms back-and-forth to simulate a simple leg motion.
-    // The motion amplitude is scaled by the current movement input magnitude (so legs stop when not moving).
-    void HandleLegMotion()
+    void SetAnim()
     {
-        if (leftLeg == null && rightLeg == null)
-            return;
 
-        float inputMagnitude = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).magnitude;
-        // compute oscillation; when inputMagnitude == 0 the cycle becomes 0 and legs return to initial rotations
-        float cycle = Mathf.Sin(Time.time * legSpeed) * legAngle * inputMagnitude;
-
-        if (leftLeg != null)
-        {
-            Quaternion offset = Quaternion.Euler(cycle, 0f, 0f);
-            leftLeg.localRotation = leftLegInitialRot * offset;
-        }
-
-        if (rightLeg != null)
-        {
-            // opposite phase to left leg for a simple alternating walk
-            Quaternion offset = Quaternion.Euler(-cycle, 0f, 0f);
-            rightLeg.localRotation = rightLegInitialRot * offset;
-        }
     }
+
 
     bool IsRunning() =>
         Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
