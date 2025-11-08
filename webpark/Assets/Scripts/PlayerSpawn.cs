@@ -1,22 +1,37 @@
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 
-public class PlayerSpawn : MonoBehaviour
+public class PlayerSpawn : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] private Transform[] spawnPoints;
 
-    void Start()
+    public override void OnJoinedRoom()
     {
-        if (PhotonNetwork.IsConnectedAndReady)
+        Debug.Log("🚀 PlayerSpawn: Joined room in main_scene, spawning player...");
+
+        if (!PhotonNetwork.IsConnectedAndReady)
         {
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Vector3 spawnPos = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-            PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity);
+            Debug.LogError("⚠️ Photon not ready — player not spawned.");
+            return;
         }
-        else
+
+        if (playerPrefab == null)
         {
-            Debug.LogError("Photon not ready � player not spawned.");
+            Debug.LogError("⚠️ Player prefab is missing!");
+            return;
         }
+
+        // Pick a random spawn point
+        Transform spawnPoint = null;
+        if (spawnPoints != null && spawnPoints.Length > 0)
+        {
+            spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        }
+
+        Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity);
+
+        Debug.Log($"✅ Spawned player: {playerObj.name} at {spawnPos}");
     }
 }

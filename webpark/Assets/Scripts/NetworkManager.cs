@@ -8,18 +8,18 @@ using TMPro;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [Header("UI References")]
-    [SerializeField] GameObject loadingScreen;
-    [SerializeField] GameObject mainScreen;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject mainScreen;
 
     [Space]
-    [SerializeField] Slider playerAmountSlider;
-    [SerializeField] TMP_InputField roomNameJOINInputField;
-    [SerializeField] TMP_InputField roomNameMAKEInputField;
-    [SerializeField] TMP_Text playerAmountText;
+    [SerializeField] private Slider playerAmountSlider;
+    [SerializeField] private TMP_InputField roomNameJOINInputField;
+    [SerializeField] private TMP_InputField roomNameMAKEInputField;
+    [SerializeField] private TMP_Text playerAmountText;
 
-    string roomNameJOIN;
-    string roomNameMAKE;
-    int maxPlayers;
+    private string roomNameJOIN;
+    private string roomNameMAKE;
+    private int maxPlayers;
 
     void Awake()
     {
@@ -30,6 +30,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         loadingScreen.SetActive(true);
         mainScreen.SetActive(false);
+
+        Debug.Log("🔌 Connecting to Photon...");
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -54,7 +56,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         maxPlayers = (int)playerAmountSlider.value;
-        roomNameMAKE = roomNameMAKEInputField.text;
+        roomNameMAKE = roomNameMAKEInputField.text.Trim();
 
         if (string.IsNullOrEmpty(roomNameMAKE))
         {
@@ -69,7 +71,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        roomNameJOIN = roomNameJOINInputField.text;
+        roomNameJOIN = roomNameJOINInputField.text.Trim();
 
         if (string.IsNullOrEmpty(roomNameJOIN))
         {
@@ -77,8 +79,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             return;
         }
 
+        Debug.Log($"🔍 Attempting to join room '{roomNameJOIN}'...");
         PhotonNetwork.JoinRoom(roomNameJOIN);
-        Debug.Log($"🔍 Trying to join room '{roomNameJOIN}'...");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -94,7 +96,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log($"✅ Joined Room: {PhotonNetwork.CurrentRoom.Name}");
-        PhotonNetwork.LoadLevel("main_scene");
-    }
 
+        // Only master client loads the scene; others auto-sync.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("🌍 Loading 'main_scene' for all players...");
+            PhotonNetwork.LoadLevel("main_scene");
+        }
+    }
 }
