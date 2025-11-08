@@ -56,4 +56,7 @@ Thumbs.db
 .idea/
 .vs/
 .vscode/
+
+# Other stuff
+webpark/Assets/photonappid.json #No appid keys for you!
 >>>>>>> 378b367a56bbecefb95403aaed2bc7daade5c989

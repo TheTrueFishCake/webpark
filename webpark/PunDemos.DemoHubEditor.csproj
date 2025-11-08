@@ -591,6 +591,10 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@b8d65294b30f\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Meryel.UnityCodeAssist.SynchronizerModel">
       <HintPath>Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.SynchronizerModel.dll</HintPath>
       <Private>False</Private>
@@ -619,6 +623,10 @@
       <HintPath>Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Meryel.UnityCodeAssist.Logger">
       <HintPath>Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.Logger.dll</HintPath>
       <Private>False</Private>
@@ -633,14 +641,6 @@
     </Reference>
     <Reference Include="Meryel.UnityCodeAssist.MQTTnet">
       <HintPath>Packages\com.merry-yellow.code-assist\Editor\ExternalReferences\Meryel.UnityCodeAssist.MQTTnet.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1159,12 +1159,12 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
