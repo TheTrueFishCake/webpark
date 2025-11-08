@@ -3752,7 +3752,6 @@ GameObject:
   - component: {fileID: 1415466829}
   - component: {fileID: 1415466828}
   - component: {fileID: 1415466832}
-  - component: {fileID: 1415466833}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3864,18 +3863,6 @@ MonoBehaviour:
   roomNameJOINInputField: {fileID: 825751765}
   roomNameMAKEInputField: {fileID: 1501832766}
   playerAmountText: {fileID: 1828212690}
---- !u!114 &1415466833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415466827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2554085f99f20bd4bbb8be61350d3a32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhotonConfigLoader
 --- !u!1 &1423646804
 GameObject:
   m_ObjectHideFlags: 0
