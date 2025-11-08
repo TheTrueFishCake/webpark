@@ -21,11 +21,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private string roomNameMAKE;
     private int maxPlayers;
 
-    void Awake()
-    {
-        PhotonNetwork.AutomaticallySyncScene = true;
-    }
-
     void Start()
     {
         loadingScreen.SetActive(true);
