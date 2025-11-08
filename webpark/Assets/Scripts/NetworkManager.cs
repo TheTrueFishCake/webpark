@@ -94,6 +94,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log($"✅ Joined Room: {PhotonNetwork.CurrentRoom.Name}");
-        SceneManager.LoadScene("main_scene"); // auto load your gameplay scene
+        PhotonNetwork.LoadLevel("main_scene");
     }
+
 }
