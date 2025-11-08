@@ -37,6 +37,13 @@ Textures
 		Modifications:
 			Resized
 			Made image blurry
+	Water:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Water_texture_1390894_Nevit.jpg
+		Modifications:
+			Resized
+			Made image blurry
+			Made image transparent
 Audio
 	Waves:
 		Link:
