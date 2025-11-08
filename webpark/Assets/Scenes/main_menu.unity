@@ -418,8 +418,8 @@ Camera:
   m_GameObject: {fileID: 198501589}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7137255, g: 0.827451, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -441,7 +441,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 75
+  far clip plane: 2500
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -469,7 +469,7 @@ Transform:
   m_GameObject: {fileID: 198501589}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13052596, y: -0, z: -0, w: 0.99144495}
-  m_LocalPosition: {x: 0, y: 25.070549, z: -47.72741}
+  m_LocalPosition: {x: 0, y: 36.5, z: -81.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4207,6 +4207,14 @@ PrefabInstance:
     - target: {fileID: 5502073163111123118, guid: b46e5944d2195004d8997e1691c4435e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -3.924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743813690021804245, guid: b46e5944d2195004d8997e1691c4435e, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743813690021804245, guid: b46e5944d2195004d8997e1691c4435e, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
