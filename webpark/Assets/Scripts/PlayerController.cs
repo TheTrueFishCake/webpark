@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviourPun
         HandleMouseLook();
         HandleJump();
         HandleMovement();
-        SetAnim();
+        Animate();
     }
 
     void HandleMovement()
@@ -96,9 +96,22 @@ public class PlayerController : MonoBehaviourPun
             playerCamera.transform.localEulerAngles = Vector3.right * cameraPitch;
     }
 
-    void SetAnim()
+    void Animate()
     {
+        float inputX = Input.GetAxis("Horizontal");
+        float inputZ = Input.GetAxis("Vertical");
 
+        if (inputX != 0f || inputZ != 0f) TriggerAnim("Walking");
+        else TriggerAnim("Idle");
+
+    }
+
+    void TriggerAnim(string animationTrigger)
+    {
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationTrigger))
+        {
+            playerAnimator.SetTrigger(animationTrigger);
+        }  
     }
 
 
