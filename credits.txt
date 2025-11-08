@@ -5,33 +5,38 @@ Textures
 		Modifications:    
 			Resized to be 512x512
 			Edited to be mirrored and turned to create a "mosaic" effect
-			Made image sharper
+			Made image blurry
 	Sand:
 		Link:
 			https://commons.wikimedia.org/wiki/File:Sand_(32579317904).jpg
 		Modifications:
 			Resized to be 512x512
+			Made image blurry
 	Dirt:
 		Link:
 			https://commons.wikimedia.org/wiki/File:Dirt_-_Preview_(Charlotte_Baglioni_via_Poly_Haven).web
 		Modifications:
 			Resized to be 512x512
+			Made image blurry
 	Rock:
 		Link:
 			https://commons.wikimedia.org/wiki/File:Rock_texture_close_up.jpg
 		Modifications:
 			Resized to be 512x512
 			Made seamless
+			Made image blurry
 	Palm Leaf:
 		Link:
 			https://pngfile.net/photo/3683/green-palm-leaf-on-transparent-background
 		Modifications:
 			Resized
+			Made image blurry
 	Bark:
 		Link:
 			https://commons.wikimedia.org/wiki/File:Bark_brown_01_diff_8k_(Rob_Tuytel_via_Poly_Haven).png
 		Modifications:
 			Resized
+			Made image blurry
 Audio
 	Waves:
 		Link:
