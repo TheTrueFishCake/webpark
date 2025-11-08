@@ -1,6 +1,8 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviourPun
 {
     [Header("References")]
     [SerializeField] CharacterController characterController;
@@ -21,9 +23,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         if (characterController == null) characterController = GetComponent<CharacterController>();
-        if (playerCamera == null) playerCamera = Camera.main;
+        if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
 
-        // Lock cursor for FPS control
+        if (!photonView.IsMine)
+        {
+            // Disable camera and script for remote players
+            if (playerCamera != null)
+                playerCamera.gameObject.SetActive(false);
+
+            this.enabled = false;
+            return;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -35,7 +46,6 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
     }
 
-    // Handles horizontal movement and applies vertical velocity (gravity / jump)
     void HandleMovement()
     {
         float inputX = Input.GetAxis("Horizontal");
@@ -50,45 +60,31 @@ public class PlayerController : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    // Handles jump initiation and gravity integration
     void HandleJump()
     {
         if (characterController.isGrounded)
         {
-            // small negative to keep grounded consistently
             if (verticalVelocity < 0f) verticalVelocity = -2f;
-
             if (Input.GetButtonDown("Jump"))
-            {
-                // v = sqrt(2 * g * h) ; gravity is negative so multiply by -1
                 verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
         }
 
-        // apply gravity every frame
         verticalVelocity += gravity * Time.deltaTime;
     }
 
-    // Handles mouse look: yaw rotates the player, pitch rotates the camera
     void HandleMouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Yaw
         transform.Rotate(Vector3.up * mouseX);
-
-        // Pitch
         cameraPitch -= mouseY;
         cameraPitch = Mathf.Clamp(cameraPitch, -90f, 90f);
+
         if (playerCamera != null)
             playerCamera.transform.localEulerAngles = Vector3.right * cameraPitch;
     }
 
-    // Simple run check (Left Shift)
-    bool IsRunning()
-    {
-        return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-    }
+    bool IsRunning() =>
+        Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 }
-

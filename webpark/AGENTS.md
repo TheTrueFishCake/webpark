@@ -2,7 +2,7 @@
 - Project name: webpark
 - Unity version: Unity 6000.2.6f2
 - Active game object:
-  - Name: Create
-  - Tag: Untagged
-  - Layer: UI
+  - Name: Player
+  - Tag: Player
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
