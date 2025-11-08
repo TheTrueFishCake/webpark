@@ -1,14 +1,34 @@
 Textures
-Grass:
-	Link:
-	https://commons.wikimedia.org/wiki/File:Buffalo_grass_texture.jpg
-	Modifications:
-	- Resized to be 512x512
-	- Edited to be mirrored and turned to create a "mosaic" effect
-	- Made image sharper
-Sand:
-	Link:
-	https://commons.wikimedia.org/wiki/File:Sand_(32579317904).jpg
-	Modifications:
-	- Resized to be 512x512
-	- Made image sharper
+	Grass:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Buffalo_grass_texture.jpg
+		Modifications:    
+			Resized to be 512x512
+			Edited to be mirrored and turned to create a "mosaic" effect
+			Made image sharper
+	Sand:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Sand_(32579317904).jpg
+		Modifications:
+			Resized to be 512x512
+	Dirt:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Dirt_-_Preview_(Charlotte_Baglioni_via_Poly_Haven).web
+		Modifications:
+			Resized to be 512x512
+	Rock:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Rock_texture_close_up.jpg
+		Modifications:
+			Resized to be 512x512
+			Made seamless
+	Palm Leaf:
+		Link:
+			https://pngfile.net/photo/3683/green-palm-leaf-on-transparent-background
+		Modifications:
+			Resized
+	Bark:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Bark_brown_01_diff_8k_(Rob_Tuytel_via_Poly_Haven).png
+		Modifications:
+			Resized
