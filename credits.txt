@@ -32,3 +32,9 @@ Textures
 			https://commons.wikimedia.org/wiki/File:Bark_brown_01_diff_8k_(Rob_Tuytel_via_Poly_Haven).png
 		Modifications:
 			Resized
+Audio
+	Waves:
+		Link:
+			https://commons.wikimedia.org/wiki/File:Sea_waves.wav
+		Modifications:
+			Compressed
