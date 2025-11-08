@@ -4,12 +4,14 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] Transform[] spawnPoints;
 
     void Start()
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            Vector3 spawnPos = new Vector3(Random.Range(-3f, 3f), 2f, Random.Range(-3f, 3f));
+            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Vector3 spawnPos = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
             PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity);
         }
         else
