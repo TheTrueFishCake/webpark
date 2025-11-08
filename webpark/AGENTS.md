@@ -2,7 +2,7 @@
 - Project name: webpark
 - Unity version: Unity 6000.2.6f2
 - Active game object:
-  - Name: duck (6)
+  - Name: hot spring
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
