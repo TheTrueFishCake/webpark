@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviourPun
 {
+
     [Header("References")]
     [SerializeField] CharacterController characterController;
     [SerializeField] Camera playerCamera;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviourPun
 
     [Header("Look & Physics")]
     [SerializeField] float mouseSensitivity = 2f;
+    [Range(1f, 179f)] //this is the camera limit
+    [SerializeField] float fov = 90f;
     [SerializeField] float gravity = -9.81f;
 
 
@@ -87,6 +90,8 @@ public class PlayerController : MonoBehaviourPun
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        playerCamera.fieldOfView = fov;
 
         transform.Rotate(Vector3.up * mouseX);
         cameraPitch -= mouseY;

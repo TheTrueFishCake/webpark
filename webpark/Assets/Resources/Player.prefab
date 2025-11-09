@@ -57,6 +57,7 @@ MonoBehaviour:
   runSpeed: 10
   jumpHeight: 2
   mouseSensitivity: 2
+  fov: 90
   gravity: -18
 --- !u!143 &1615215187702430491
 CharacterController:
