@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         float savedFOV = PlayerPrefs.GetFloat(FOVKey, 60f);
 
         if (cameraController != null)
-            cameraController.sensitivity = savedSensitivity;
+            cameraController.mouseSensitivity = savedSensitivity;
         if (playerCamera != null)
             playerCamera.fieldOfView = savedFOV;
 
@@ -108,7 +108,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     void OnSensitivityChanged(float value)
     {
         if (cameraController != null)
-            cameraController.sensitivity = value;
+            cameraController.mouseSensitivity = value;
 
         UpdateSensitivityText(value);
         PlayerPrefs.SetFloat(SensitivityKey, value);

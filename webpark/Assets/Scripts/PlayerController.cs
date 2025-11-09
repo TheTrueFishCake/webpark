@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] float jumpHeight = 2f;
 
     [Header("Look & Physics")]
-    [SerializeField] float mouseSensitivity = 2f;
+    public float mouseSensitivity = 2f;
     [Range(1f, 179f)] //this is the camera limit
     [SerializeField] float fov = 90f;
     [SerializeField] float gravity = -9.81f;
